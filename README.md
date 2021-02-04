@@ -13,6 +13,4 @@ This game is a replica of the popular game knots and crosses which is a 2 player
 ###  What is in the respository?
 In this repository there is;
 
-• An assignment brief which may be a word doc, pdf.
-
 • HTML file (created from scracth) of the project.
