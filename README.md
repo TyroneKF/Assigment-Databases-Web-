@@ -6,9 +6,9 @@ First Year Module
 
 ###### Attention
 Heads up the game doesn't have a draw feature implemented into it.
-
+su
 ### Aim of the Game
-This game is a replica of the popular game knots and crosses which is a 2 player game whereby a player wins by successfully putting their symbol in a line of 3 in the 3x3 grid.
+This game is a replica of the popular game knots and crosses which is a 2 player game whereby a player wins by successfully putting their symbol being an "X" or a "O" in a line of 3 in the 3x3 grid after, taking turns subquently.
 
 ###  What is in the respository?
 In this repository there is;
