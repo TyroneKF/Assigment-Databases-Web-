@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		<title> Tf289 A1 3[CO323] </title>
+		
+		
+		<style>
+			div{
+			width: 100px;
+			height: 100px;
+			border-style: solid;
+			border-color: blue;
+			float: left;
+			text-align: center;;
+			
+			align-items: center;
+			
+			font-size: 80px;
+			}
+			
+			html, body {
+			height: 700px;
+			width: 400px;						
+			}
+			
+			#boxDix{
+			margin-top: 50px;
+			width: 312px;
+			height: 70px;
+			border-color: red;
+			text-align: center;
+			}
+			
+			
+			
+		</style>s
+		
+	</head>
+	
+	<body>
+		<h1 id="mainHeader" align="center"> Tic Tac Toe Game 19</h1>
+		
+		<h2 id="infoHeader" align="center"> Player 1's Turn (X) </h2>
+		
+		
+		<br> </br>
+		
+		<div id="div1" onclick="checkTxtContent(this.id)"></div>
+		<div id="div2" onclick="checkTxtContent(this.id)"></div>
+		
+		<div id="div3" onclick="checkTxtContent(this.id)"></div>
+		
+		<br> </br>
+		
+		<div id="div4" onclick="checkTxtContent(this.id)"></div>
+		<div id="div5" onclick="checkTxtContent(this.id)"></div>
+		<div id="div6" onclick="checkTxtContent(this.id)"></div>
+		
+		<br> </br>
+		
+		<div id="div7" onclick="checkTxtContent(this.id)"></div>
+		<div id="div8" onclick="checkTxtContent(this.id)"></div>
+		<div id="div9" onclick="checkTxtContent(this.id)"></div>
+		
+		<br></br>
+		
+		<div id="boxDix">
+			<button id ="Reset" type="button" onclick="resetGame()"> Reset  Game </button>
+		</div>
+		
+		<script type='text/javascript'>
+			
+			var usersTurn = 1;
+			var charascter = "X";
+			var go = true;
+			
+			var infoHeader = document.getElementById("infoHeader");
+			var mainHeader = document.getElementById("mainHeader");
+			
+			var Div1 = document.getElementById("div1");
+			var Div2 = document.getElementById("div2");
+			
+			var Div3 = document.getElementById("div3");
+			
+			var Div4 = document.getElementById("div4");
+			var Div5 = document.getElementById("div5");
+			var Div6 = document.getElementById("div6");
+			var Div7 = document.getElementById("div7");
+			var Div8 = document.getElementById("div8");
+			var Div9 = document.getElementById("div9");
+			
+			function resetGame()
+			{
+				Div1.textContent=""; 
+				Div2.textContent=""; 
+				Div3.textContent=""; 
+				Div4.textContent=""; 
+				Div5.textContent=""; 
+				Div6.textContent=""; 
+				Div7.textContent=""; 
+				Div8.textContent=""; 
+				Div9.textContent="";
+				
+				Div1.style.background = "white";
+				Div2.style.background = "white";
+				Div3.style.background = "white";
+				Div4.style.background = "white";
+				Div5.style.background = "white";
+				Div6.style.background = "white";
+				Div7.style.background = "white";
+				Div8.style.background = "white";
+				Div9.style.background = "white"; 
+
+				
+				infoHeader.innerHTML = "Player 1's Turn (X)";
+				mainHeader.innerHTML = "Tic Tac Toe Game";
+				
+				usersTurn = 1;
+				character = "X";
+				go = true;
+			}
+			
+			function checkTxtContent(id)
+			{   
+				var valueTxt = document.getElementById(id).textContent;
+				var div = document.getElementById(id);				
+				
+			    if (go==true)
+				{	
+					if (valueTxt == "")
+					{					
+						if (usersTurn == 1)
+						{   
+						    div.style.color = "red";
+							div.textContent = "X";
+							winningMoves();
+							if (go==true)
+							{
+								character = "O";
+								usersTurn =2;
+								updateTurnHeader();	
+							}
+						}
+						else if (usersTurn == 2)
+						{   div.style.color = "orange";
+							div.textContent = "O";
+							winningMoves();
+							if (go==true)
+							{
+								character = "X";
+								usersTurn =1;
+								updateTurnHeader();
+							}
+						}
+					}
+				}
+			}
+			
+			function updateTurnHeader()
+			{	
+			    event.value = "Players " + usersTurn + " Turn " +"("+ character +")" ;
+				infoHeader.innerHTML = event.value;				
+			}
+			
+			function areTheyTheSame(x,y,z)
+			{   
+				if (x == y && y == z)	
+				{
+					if(z == "X" || z == "O")
+					{				
+						return true;
+					}
+					else
+					{
+						return false;
+						
+					}
+				}
+				
+				else
+				{
+					return false;
+				}				
+			}
+			
+			function winningMoves()
+			{   
+			    // winning going across right
+				if(areTheyTheSame(Div1.textContent,Div2.textContent,Div3.textContent))
+				{   Div1.style.background = "yellow";
+				    Div2.style.background = "yellow";
+					Div3.style.background = "yellow";
+					go =false;
+					
+				}				
+				else if(areTheyTheSame(Div4.textContent,Div5.textContent,Div6.textContent))
+				{   Div4.style.background = "yellow";
+					Div5.style.background = "yellow";
+					Div6.style.background = "yellow";
+					go =false;					
+				}				
+				else if(areTheyTheSame(Div7.textContent,Div8.textContent,Div9.textContent))
+				{ 
+				    Div7.style.background = "yellow";
+					Div8.style.background = "yellow";
+					Div9.style.background = "yellow";
+					go =false;												
+				}
+				
+				//############################################################################
+				// winning going diagonal 
+				else if(areTheyTheSame(Div1.textContent,Div5.textContent,Div9.textContent))
+				{   Div1.style.background = "yellow";
+					Div5.style.background = "yellow";
+					Div9.style.background = "yellow";
+				    go = false;										
+				}
+				
+				else if(areTheyTheSame(Div3.textContent,Div5.textContent,Div7.textContent))
+				{   Div3.style.background = "yellow";
+					Div5.style.background = "yellow";
+					Div7.style.background = "yellow";
+				    go = false;										
+				}
+				//############################################################################
+				// Winning going down
+				else if(areTheyTheSame(Div1.textContent,Div4.textContent,Div7.textContent))
+				{   
+					Div1.style.background = "yellow";
+					Div4.style.background = "yellow";
+					Div7.style.background = "yellow";
+				    go = false;										
+				}				
+				else if(areTheyTheSame(Div2.textContent,Div5.textContent,Div8.textContent))
+				{  
+					Div2.style.background = "yellow";
+					Div5.style.background = "yellow";
+					Div8.style.background = "yellow";
+				    go = false;										
+				}				
+				else if(areTheyTheSame(Div3.textContent,Div6.textContent,Div9.textContent))
+				{   
+					Div3.style.background = "yellow";
+					Div6.style.background = "yellow";
+					Div9.style.background = "yellow";
+				    go = false;										
+				}
+				
+				// ###################################################################################
+				
+				if (go == false)
+				{
+					event.value = "Player " + usersTurn + " (" +character + ")" + " Won!!" ;
+					infoHeader.innerHTML = event.value;
+					
+					mainHeader.innerHTML = "Game Over!!";
+					
+				}				
+			}
+			
+		</script>
+		
+	</body>
+</html> 		
